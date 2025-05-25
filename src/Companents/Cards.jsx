@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 function Cards({ image, songName, author }) {
     const [pressed, setPressed] = useState(false);
 
+    const cleanSongName = songName
+        ?.replace(/\.(mp3|wav|ogg)$/i, '')
+        ?.replace(/\s*\(.*?\)/g, '')
+        ?.trim();
+
     return (
         <div className="w-full px-5">
             <div
@@ -22,8 +27,8 @@ function Cards({ image, songName, author }) {
                         style={{ opacity: 0.85 }}
                     />
                     <div className="ml-4 flex flex-col justify-between py-1">
-                        <div className="w-full max-w-[197px] text-[22px] font-normal leading-[22px] tracking-[-0.41px] font-[Nunito] text-[#F2F2F2]">
-                            {songName}
+                        <div className="w-full max-w-[197px] text-[20px] font-normal leading-[22px] tracking-[-0.41px] font-[Nunito] text-[#F2F2F2] break-words">
+                            {cleanSongName}
                         </div>
                         <div className="w-full max-w-[200px] text-[16px] font-normal leading-[18px] tracking-[-0.08px] font-[Nunito] text-[#DEDEDE]">
                             {author}
@@ -34,5 +39,4 @@ function Cards({ image, songName, author }) {
         </div>
     );
 }
-
 export default Cards;
