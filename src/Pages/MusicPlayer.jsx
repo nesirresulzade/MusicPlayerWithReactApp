@@ -114,12 +114,17 @@ function MusicPlayer() {
     );
   }
 
+  const CleanSongName = currentAudio.name
+    .replace(/\.(mp3|wav|ogg)$/i, '')
+    .replace(/\s*\(.*?\)/g, '')
+    .trim();
+
   return (
     <div className="w-full min-h-screen flex justify-center items-center bg-[#0A071E] overflow-y-auto relative">
       <audio ref={audioRef} src={currentAudio.url} />
       <div className="w-[360px] min-h-[740px] bg-[#0A071E] flex flex-col justify-between items-center px-4 py-6 pb-[100px]">
         <div className="text-[#F2F2F2] font-[Segoe UI] font-semibold text-[23px] text-center">
-          {currentAudio.name}
+          {CleanSongName}
         </div>
 
         <div className="w-[299px] h-[299px] mt-6 rounded-[30px] overflow-hidden">
@@ -127,7 +132,7 @@ function MusicPlayer() {
         </div>
 
         <div className="text-center mt-6">
-          <div className="text-[#F2F2F2] font-[Nunito] text-[24px]">{currentAudio.name}</div>
+          <div className="text-[#F2F2F2] font-[Nunito] text-[24px]">{CleanSongName}</div>
           <div className="text-[#8E8E8E] font-[Nunito] text-[18px] mt-1">{currentAudio.author}</div>
         </div>
 
