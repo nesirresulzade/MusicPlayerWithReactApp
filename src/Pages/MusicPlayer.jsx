@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../Companents/Navbar';
 
@@ -99,7 +99,19 @@ function MusicPlayer() {
   };
 
   if (!audioFiles || !currentAudio) {
-    return <Navbar />;
+    return (
+      <>
+        <div className="flex flex-col items-center justify-center mt-10 text-center px-4">
+          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-6 py-4 rounded-xl shadow-md max-w-md">
+            <h2 className="text-xl font-semibold mb-2">Hazirda Oxunacaq Mahni yoxdur</h2>
+            <p className="text-sm">
+              Zəhmət olmasa bir musiqi faylı yükləyin və ya mövcud siyahıdan birini seçin.
+            </p>
+          </div>
+        </div>
+        <Navbar />
+      </>
+    );
   }
 
   return (

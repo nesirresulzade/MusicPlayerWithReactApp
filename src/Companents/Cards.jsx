@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Cards({ image, songName, author }) {
+    const [pressed, setPressed] = useState(false);
+
     return (
         <div className="w-full px-5">
-            <div className="max-w-[361px] w-full rounded-md p-4 mx-auto bg-[#0A071E] transition-all duration-200 active:bg-[#1a153a] cursor-pointer">
+            <div
+                className={`max-w-[361px] w-full rounded-md p-4 mx-auto cursor-pointer transition-all duration-200 transform ${pressed ? 'bg-[#1a153a] scale-[0.98] shadow-lg' : 'bg-[#0A071E]'
+                    } hover:bg-[#1a153a] hover:shadow-lg hover:scale-[0.98] active:scale-[0.97]`}
+                onTouchStart={() => setPressed(true)}
+                onTouchEnd={() => setPressed(false)}
+                onMouseDown={() => setPressed(true)}
+                onMouseUp={() => setPressed(false)}
+                onMouseLeave={() => setPressed(false)}
+            >
                 <div className="w-full flex p-2 rounded-lg">
                     <img
                         src={image}
@@ -25,4 +35,4 @@ function Cards({ image, songName, author }) {
     );
 }
 
-export default Cards; 
+export default Cards;
