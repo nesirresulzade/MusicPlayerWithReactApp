@@ -8,18 +8,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [test, setTest] = useState([]);
-  console.log(test);
-
-  const [url , setUrl] = useState([]);
-  console.log("url den gelen data",url);
+  console.log("test icindekiler",test);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home test={test} />} />
-        <Route path="/library" element={<MusicPlayer url={url}/>} />
+        <Route path="/library" element={<MusicPlayer  />} />
         <Route path="/download" element={<DowlandDiviceMusic setTest={setTest} />} />
-        <Route path="/search" element={<Search setUrl={setUrl}/>} />
+        <Route path="/search" element={<Search setTest={setTest} />} />
       </Routes>
     </BrowserRouter>
   );

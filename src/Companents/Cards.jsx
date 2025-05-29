@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Cards({ image, songName, author, showIcon = false }) {
+function Cards({ image, songName, author, showIcon = false, onAddClick }) {
     const [pressed, setPressed] = useState(false);
 
     const cleanSongName = songName
@@ -11,9 +11,8 @@ function Cards({ image, songName, author, showIcon = false }) {
     return (
         <div className="w-full px-5">
             <div
-                className={`max-w-[361px] w-full rounded-md p-4 mx-auto cursor-pointer transition-all duration-200 transform ${
-                    pressed ? 'bg-[#1a153a] scale-[0.98] shadow-lg' : 'bg-[#0A071E]'
-                } hover:bg-[#1a153a] hover:shadow-lg hover:scale-[0.98] active:scale-[0.97]`}
+                className={`max-w-[361px] w-full rounded-md p-4 mx-auto cursor-pointer transition-all duration-200 transform ${pressed ? 'bg-[#1a153a] scale-[0.98] shadow-lg' : 'bg-[#0A071E]'
+                    } hover:bg-[#1a153a] hover:shadow-lg hover:scale-[0.98] active:scale-[0.97]`}
                 onTouchStart={() => setPressed(true)}
                 onTouchEnd={() => setPressed(false)}
                 onMouseDown={() => setPressed(true)}
@@ -39,13 +38,20 @@ function Cards({ image, songName, author, showIcon = false }) {
                     </div>
 
                     {showIcon && (
-                        <div className="ml-2 w-8 h-8 flex items-center justify-center bg-[#3b82f6] rounded-full text-white hover:bg-blue-600 transition">
+                        <div
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (onAddClick) onAddClick();
+                            }}
+                            className="ml-2 w-9 h-9 flex items-center justify-center bg-cyan-400 rounded-full text-white hover:bg-cyan-500 active:bg-cyan-600 shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
+                            title="Əlavə et"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
-                                className="w-5 h-5"
+                                className="w-6 h-6"
                             >
                                 <path
                                     strokeLinecap="round"
