@@ -1,4 +1,9 @@
-import { MusicalNoteIcon, ArrowDownTrayIcon, PlayIcon } from '@heroicons/react/24/outline';
+import {
+  MusicalNoteIcon,
+  ArrowDownTrayIcon,
+  PlayIcon,
+  MagnifyingGlassIcon, // 🔍 Search icon əlavə edildi
+} from '@heroicons/react/24/outline';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -15,6 +20,8 @@ function Navbar() {
       setActive('download');
     } else if (location.pathname.startsWith('/library')) {
       setActive('play');
+    } else if (location.pathname.startsWith('/search')) {
+      setActive('search');
     }
   }, [location.pathname]);
 
@@ -26,8 +33,7 @@ function Navbar() {
   return (
     <div className="fixed bottom-0 w-full px-5 sm:px-6 md:px-10 z-50">
       <div className="mx-auto max-w-sm h-[85px] bg-[#0A091E] rounded-tl-[40px] rounded-tr-[40px] shadow-[0px_-5px_20px_0px_#A8BACF1A] flex items-center justify-center">
-        <div className="w-[260px] h-[34px] flex justify-between items-center">
-
+        <div className="w-[320px] h-[34px] flex justify-between items-center">
           {/* Music Page */}
           <button
             onClick={() => {
@@ -50,6 +56,17 @@ function Navbar() {
             <ArrowDownTrayIcon className="w-full h-full" />
           </button>
 
+          {/* Search Page */}
+          <button
+            onClick={() => {
+              setActive('search');
+              navigate('/search');
+            }}
+            className={iconClass('search')}
+          >
+            <MagnifyingGlassIcon className="w-full h-full" />
+          </button>
+
           {/* Library / Play Page */}
           <button
             onClick={() => {
@@ -60,7 +77,6 @@ function Navbar() {
           >
             <PlayIcon className="w-full h-full" />
           </button>
-
         </div>
       </div>
     </div>

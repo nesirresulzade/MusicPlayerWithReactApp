@@ -4,10 +4,9 @@ import Navbar from '../Companents/Navbar';
 
 
 
-function MusicPlayer() {
+function MusicPlayer({ url }) {
   const location = useLocation();
   const { audioFiles, currentIndex } = location.state || {};
-
   const [currentSongIndex, setCurrentSongIndex] = useState(currentIndex || 0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -16,16 +15,17 @@ function MusicPlayer() {
   const audioRef = useRef(null);
 
   //!Cari mahnı obyekti
-  const currentAudio = audioFiles ? audioFiles[currentSongIndex] : null;
-
+  const currentAudio = audioFiles ? audioFiles[currentSongIndex] : url;
+  console.log("habsfkjsbk" ,currentAudio.url)
   //! Avtomatik oynatma mahnı dəyişəndə
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.load();
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  }, [currentSongIndex]);
+useEffect(() => {
+  if (audioRef.current && currentAudio?.url) {
+    audioRef.current.load();
+    audioRef.current.play();
+    setIsPlaying(true);
+  }
+}, [currentSongIndex, currentAudio]);
+
 
   //! Vaxt yenilənməsi və müddət
   useEffect(() => {

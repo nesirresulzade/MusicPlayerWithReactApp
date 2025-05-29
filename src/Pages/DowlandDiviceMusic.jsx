@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function DowlandDiviceMusic({ setTest , setCurrentIndex}) {
 
   const [audioFiles, setAudioFiles] = useState([]);
+  console.log(audioFiles)
   const navigate = useNavigate();
   const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
