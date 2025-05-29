@@ -66,12 +66,12 @@ function Search({ setTest }) {
                         placeholder="Write Music Name"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="flex-1 h-full px-6 text-[#0A091E] placeholder-[#999] text-lg font-medium outline-none"
+                        className="flex-1 h-full px-4 text-[#0A091E] placeholder-[#999] text-lg font-medium outline-none"
                     />
                     <button
                         onClick={handleClick}
                         disabled={isComplete}
-                        className={`h-full w-28 text-white text-base font-bold flex items-center justify-center transition-all duration-300 bg-gradient-to-r from-cyan-400 to-blue-500 ${isComplete ? 'cursor-not-allowed' : 'hover:brightness-110 cursor-pointer'
+                        className={`h-full w-32 text-white text-base font-bold flex items-center justify-center transition-all duration-300 bg-gradient-to-r from-cyan-400 to-blue-500 ${isComplete ? 'cursor-not-allowed' : 'hover:brightness-110 cursor-pointer'
                             }`}
                     >
                         {!isComplete ? (
