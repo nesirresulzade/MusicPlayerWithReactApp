@@ -18,8 +18,10 @@ function Search({ onSearch }) {
   return (
     <div className="w-full px-4 py-4 max-w-[390px] mx-auto flex items-center justify-between mb-6">
       <div className="text-[#F2F2F2] font-[Nunito] font-semibold text-[26px] leading-[20px] tracking-[-0.24px] w-[159px]">
-        Listen The<br />Latest Musics
+        Listen The<br />
+        <span className="block mt-2">Latest Musics</span>
       </div>
+
 
       <div className="relative rounded-full w-[163px] h-[48px] p-[2px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">
         <div className="flex items-center bg-[#F2F2F2] rounded-full w-full h-full px-3">
@@ -42,7 +44,7 @@ function Search({ onSearch }) {
           <input
             type="text"
             ref={inputRef}
-            placeholder="Search Music"
+            placeholder="Search"
             onChange={handleChange}
             className="ml-2 bg-transparent w-[81px] h-[26px] text-[14px] text-black placeholder-gray-500 font-[Nunito] 
               focus:outline-none focus:placeholder-gray-400 
